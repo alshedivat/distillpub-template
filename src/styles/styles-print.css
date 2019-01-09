@@ -27,12 +27,27 @@
     /* no general margins -- CSS Grid takes care of those */
   }
 
+  header {
+    /* no need to display the header */
+    display: none;
+  }
+
+  .page-content {
+    /* removes superfluous padding */
+    padding: 0;
+  }
+
   p, code {
     page-break-inside: avoid;
   }
 
   h2, h3 {
     page-break-after: avoid;
+  }
+
+  d-article hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
   d-header {

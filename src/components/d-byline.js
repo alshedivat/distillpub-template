@@ -17,19 +17,23 @@
 export function bylineTemplate(frontMatter) {
   return `
   <div class="byline grid">
-    <div class="authors-affiliations grid">
+    <div>
       <h3>Authors</h3>
-      <h3>Affiliations</h3>
       ${frontMatter.authors.map(author => `
         <p class="author">
           ${author.personalURL ? `
-            <a class="name" href="${author.personalURL}">${author.name}</a>` : `
+            <a class="name" href="${author.personalURL}" target="_blank">${author.name}</a>` : `
             <span class="name">${author.name}</span>`}
         </p>
-        <p class="affiliation">
-        ${author.affiliations.map(affiliation =>
-          affiliation.url ? `<a class="affiliation" href="${affiliation.url}">${affiliation.name}</a>` : `<span class="affiliation">${affiliation.name}</span>`
-        ).join(', ')}
+      `).join('')}
+    </div>
+    <div>
+      <h3>Editors</h3>
+      ${frontMatter.editors.map(editor => `
+        <p class="editor">
+          ${editor.personalURL ? `
+            <a class="name" href="${editor.personalURL}" target="_blank">${editor.name}</a>` : `
+            <span class="name">${editor.name}</span>`}
         </p>
       `).join('')}
     </div>
@@ -38,12 +42,6 @@ export function bylineTemplate(frontMatter) {
       ${frontMatter.publishedDate ? `
         <p>${frontMatter.publishedMonth} ${frontMatter.publishedDay}, ${frontMatter.publishedYear}</p> ` : `
         <p><em>Not published yet.</em></p>`}
-    </div>
-    <div>
-      <h3>DOI</h3>
-      ${frontMatter.doi ? `
-        <p><a href="https://doi.org/${frontMatter.doi}">${frontMatter.doi}</a></p>` : `
-        <p><em>No DOI yet.</em></p>`}
     </div>
   </div>
 `;

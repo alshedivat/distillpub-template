@@ -74,6 +74,36 @@ class Author {
   }
 }
 
+class Editor {
+
+  // constructor(name='', personalURL='', affiliation='', affiliationURL='') {
+  //   this.name = name; // 'Chris Olah'
+  //   this.personalURL = personalURL; // 'https://colah.github.io'
+  //   this.affiliation = affiliation; // 'Google Brain'
+  //   this.affiliationURL = affiliationURL; // 'https://g.co/brain'
+  // }
+
+  constructor(object) {
+    this.name = object.editor; // 'Chris Olah'
+    this.personalURL = object.editorURL; // 'https://colah.github.io'
+    this.affiliation = object.affiliation; // 'Google Brain'
+    this.affiliationURL = object.affiliationURL; // 'https://g.co/brain'
+    this.affiliations = object.affiliations || []; // new-style affiliations
+  }
+
+  // 'Chris'
+  get firstName() {
+    const names = this.name.split(' ');
+    return names.slice(0, names.length - 1).join(' ');
+  }
+
+  // 'Olah'
+  get lastName() {
+    const names = this.name.split(' ');
+    return names[names.length -1];
+  }
+}
+
 export function mergeFromYMLFrontmatter(target, source) {
   target.title = source.title;
   if (source.published) {
@@ -94,6 +124,7 @@ export function mergeFromYMLFrontmatter(target, source) {
   }
   target.description = source.description;
   target.authors = source.authors.map( (authorObject) => new Author(authorObject));
+  target.editors = source.editors.map( (editorObject) => new Editor(editorObject));
   target.katex = source.katex;
   target.password = source.password;
   target.doi = source.doi;
@@ -104,6 +135,7 @@ export class FrontMatter {
     this.title = 'unnamed article'; // 'Attention and Augmented Recurrent Neural Networks'
     this.description = ''; // 'A visual overview of neural attention...'
     this.authors = []; // Array of Author(s)
+    this.editors = []; // Array of Editor(s)
 
     this.bibliography = new Map();
     this.bibliographyParsed = false;

@@ -72,7 +72,8 @@ d-article d-byline a:hover {
   border-bottom: none;
 }
 
-d-byline p.author {
+d-byline p.author,
+d-byline p.editor {
   font-weight: 500;
 }
 

@@ -116,6 +116,48 @@ distill-footer {
   }
 }
 
+@media(min-width: 1280px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 70px [middle-start] 70px [text-start kicker-end] 70px 70px 70px 70px 70px 70px 70px 70px [text-end gutter-start] 70px [middle-end] 70px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
+@media(min-width: 1320px) {
+  .base-grid,
+  distill-header,
+  d-title,
+  d-abstract,
+  d-article,
+  d-appendix,
+  distill-appendix,
+  d-byline,
+  d-footnote-list,
+  d-citation-list,
+  distill-footer {
+    grid-template-columns: [screen-start] 1fr [page-start kicker-start] 75px [middle-start] 75px [text-start kicker-end] 75px 75px 75px 75px 75px 75px 75px 75px [text-end gutter-start] 75px [middle-end] 75px [page-end gutter-end] 1fr [screen-end];
+    grid-column-gap: 32px;
+  }
+
+  .grid {
+    grid-column-gap: 32px;
+  }
+}
+
 
 
 
@@ -183,4 +225,20 @@ d-article aside {
   .side {
     grid-column: gutter;
   }
+}
+
+d-article .fake-img {
+    background: #bbb;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 12px;
+}
+
+d-article .fake-img > p {
+    font-family: monospace;
+    color: white;
+    text-align: left;
+    margin: 12px 0;
+    text-align: center;
+    font-size: 16px;
 }
