@@ -104,6 +104,36 @@ class Editor {
   }
 }
 
+class Lecturer {
+
+  // constructor(name='', personalURL='', affiliation='', affiliationURL='') {
+  //   this.name = name; // 'Chris Olah'
+  //   this.personalURL = personalURL; // 'https://colah.github.io'
+  //   this.affiliation = affiliation; // 'Google Brain'
+  //   this.affiliationURL = affiliationURL; // 'https://g.co/brain'
+  // }
+
+  constructor(object) {
+    this.name = object.lecturer; // 'Chris Olah'
+    this.personalURL = object.lecturerURL; // 'https://colah.github.io'
+    this.affiliation = object.affiliation; // 'Google Brain'
+    this.affiliationURL = object.affiliationURL; // 'https://g.co/brain'
+    this.affiliations = object.affiliations || []; // new-style affiliations
+  }
+
+  // 'Chris'
+  get firstName() {
+    const names = this.name.split(' ');
+    return names.slice(0, names.length - 1).join(' ');
+  }
+
+  // 'Olah'
+  get lastName() {
+    const names = this.name.split(' ');
+    return names[names.length -1];
+  }
+}
+
 export function mergeFromYMLFrontmatter(target, source) {
   target.title = source.title;
   if (source.published) {
@@ -125,6 +155,7 @@ export function mergeFromYMLFrontmatter(target, source) {
   target.description = source.description;
   target.authors = source.authors.map( (authorObject) => new Author(authorObject));
   target.editors = source.editors.map( (editorObject) => new Editor(editorObject));
+  target.lecturers = source.lecturers.map( (lecturerObject) => new Lecturer(lecturerObject));
   target.katex = source.katex;
   target.password = source.password;
   target.doi = source.doi;
@@ -136,6 +167,7 @@ export class FrontMatter {
     this.description = ''; // 'A visual overview of neural attention...'
     this.authors = []; // Array of Author(s)
     this.editors = []; // Array of Editor(s)
+    this.lecturers = []; // Array of Lecturer(s)
 
     this.bibliography = new Map();
     this.bibliographyParsed = false;
@@ -195,16 +227,6 @@ export class FrontMatter {
     //  doi: '10.23915/distill.00001',
     this.publishedDate = undefined;
   }
-
-  // Example:
-  // title: Demo Title Attention and Augmented Recurrent Neural Networks
-  // published: Jan 10, 2017
-  // authors:
-  // - Chris Olah:
-  // - Shan Carter: http://shancarter.com
-  // affiliations:
-  // - Google Brain:
-  // - Google Brain: http://g.co/brain
 
   //
   // Computed Properties

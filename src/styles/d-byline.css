@@ -73,7 +73,8 @@ d-article d-byline a:hover {
 }
 
 d-byline p.author,
-d-byline p.editor {
+d-byline p.editor,
+d-byline p.lecturer {
   font-weight: 500;
 }
 

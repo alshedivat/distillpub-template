@@ -18,6 +18,16 @@ export function bylineTemplate(frontMatter) {
   return `
   <div class="byline grid">
     <div>
+      <h3>Lecturers</h3>
+      ${frontMatter.lecturers.map(lecturer => `
+        <p class="lecturer">
+          ${lecturer.personalURL ? `
+            <a class="name" href="${lecturer.personalURL}" target="_blank">${lecturer.name}</a>` : `
+            <span class="name">${lecturer.name}</span>`}
+        </p>
+      `).join('')}
+    </div>
+    <div>
       <h3>Authors</h3>
       ${frontMatter.authors.map(author => `
         <p class="author">
