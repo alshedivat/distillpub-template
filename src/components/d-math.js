@@ -30,7 +30,7 @@ ${katexCSSTag}
 
 :host {
   display: inline-block;
-  contain: content;
+  // contain: content;
 }
 
 :host([block]) {
