@@ -25,6 +25,7 @@
 
   html {
     /* no general margins -- CSS Grid takes care of those */
+    color: black;
   }
 
   header {
@@ -37,12 +38,17 @@
     padding: 0;
   }
 
-  p, code {
+  p, code, ul, ol, li, img, d-math, div.equation {
     page-break-inside: avoid;
   }
 
-  h2, h3 {
+  h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  d-appendix {
+    page-break-before: always;
   }
 
   d-article hr {
