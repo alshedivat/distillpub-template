@@ -158,7 +158,9 @@ export function mergeFromYMLFrontmatter(target, source) {
   target.lecturers = source.lecturers.map( (lecturerObject) => new Lecturer(lecturerObject));
   target.katex = source.katex;
   target.password = source.password;
-  target.doi = source.doi;
+  if (source.doi) {
+    target.doi = source.doi;
+  }
 }
 
 export class FrontMatter {
@@ -225,6 +227,7 @@ export class FrontMatter {
     //  githubCompareUpdatesUrl: 'https://github.com/distillpub/post--augmented-rnns/compare/1596e094d8943d2dc0ea445d92071129c6419c59...3bd9209e0c24d020f87cf6152dcecc6017cbc193',
     //  updatedDate: 2017-03-21T07:13:16.000Z,
     //  doi: '10.23915/distill.00001',
+    this.doi = undefined;
     this.publishedDate = undefined;
   }
 
@@ -373,6 +376,7 @@ export class FrontMatter {
     Object.assign(target, this);
     target.bibliography = objectFromMap(this.bibliographyEntries);
     target.url = this.url;
+    target.doi = this.doi;
     target.githubUrl = this.githubUrl;
     target.previewURL = this.previewURL;
     if (this.publishedDate) {
