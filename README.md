@@ -1,6 +1,11 @@
 # Distill Template
 
-This is the repository for the Distill web framework. 
+This is the repository for the Distill web framework.
+
+## al-folio branch note
+
+The `al-folio` branch versions runtime snapshots in `dist/` for deterministic
+vendoring by downstream `al-folio-distill` releases.
 
 ## Contributing
 
