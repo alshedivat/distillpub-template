@@ -2110,6 +2110,16 @@ d-appendix > distill-appendix {
         <p><em>Not published yet.</em></p>`
       }
     </div>
+    <div>
+      <h3>DOI</h3>
+      ${
+        frontMatter.doi
+          ? `
+        <p><a href="https://doi.org/${frontMatter.doi}">${frontMatter.doi}</a></p>`
+          : `
+        <p><em>No DOI yet.</em></p>`
+      }
+    </div>
   </div>
 `;
   }
